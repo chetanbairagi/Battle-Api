@@ -28,7 +28,7 @@ app.config = require('./config/config.js');
 
 require('./passportAuth/passportAuth.js')(app, passport);
 
-app.common = require('./functions/common');
+app.common = require('./functions/createJwtRandomToken.js');
 
 require('./onServerStrart/mongooseConnection.js')(app, mongoose);
 require('./onServerStrart/uncaughtException.js')(app);	

@@ -1,4 +1,3 @@
-
 // Function to insert document 
 exports.createDocument = function (toSaveDoc, collection,callback) {
 	let res = new collection(toSaveDoc);
@@ -12,8 +11,8 @@ exports.createDocument = function (toSaveDoc, collection,callback) {
 
 
 // Function to get document
-exports.getAll = function (query, collection, selection, populateDoc, sorting, app, callback) {
-	collection.find(query, selection).populate(populateDoc).sort(sorting).lean().then((doc) => {
+exports.getAllSearchData = function (query, collection, selection, activityPopulateObj, sorting, app, callback) {
+	collection.find(query, selection).populate(activityPopulateObj).sort(sorting).lean().then((doc) => {
 		callback("", doc);
 	}).catch((err) => {
 		callback(err, "");
@@ -21,7 +20,7 @@ exports.getAll = function (query, collection, selection, populateDoc, sorting, a
 };
 
 // Function to get number of documents in a collection
-exports.getAllDocsCount = function (query, collection, app, callback) {
+exports.getAllDataCount = function (query, collection, app, callback) {
 	collection.count(query, function (err, count) {
 		if (err) {
 			callback(err, "");
@@ -32,7 +31,7 @@ exports.getAllDocsCount = function (query, collection, app, callback) {
 };
 
 // Function to get data as aggregate function & group by & sort
-exports.getAllDocsbyGroup = function (query, collection, app, callback) {
+exports.getAllDataByGroup = function (query, collection, app, callback) {
 	collection.aggregate(query).then((doc) => {
 		callback("", doc);
 	}).catch((err) => {

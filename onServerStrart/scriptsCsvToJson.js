@@ -11,7 +11,7 @@ module.exports = function (app) {
                 if(err){
                     console.log("Error in saving doc : ",err)
                 }else{
-                    //console.log("Documetn inserted successfully");
+                    console.log("Documetn inserted successfully");
                 }
             });
         });

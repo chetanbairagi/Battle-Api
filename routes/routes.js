@@ -1,5 +1,5 @@
 module.exports = function (app, passport) { 
-    app.post('/battle/createJwtToken', require('../apis/battleApis.js').createJwtToken);
+    app.post('/createJwtToken', require('../apis/battleApis.js').createJwtToken);
     
     app.get('/list', function(req, res, next) {
     	passport.authenticate('jwt', { session: false },(err, battle) => {

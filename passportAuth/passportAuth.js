@@ -6,7 +6,7 @@ module.exports = function (app, passport) {
     opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
     opts.secretOrKey = app.config.TOKEN_SECRET;
     passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
-        if (jwt_payload.role == 1) {
+        if (jwt_payload.battleKey == 1) {
             return done(null, true);
         } else {
             return done(null, false);

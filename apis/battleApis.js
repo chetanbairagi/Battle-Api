@@ -17,7 +17,7 @@ exports.list = function(req, res) {
 		}
 	];
    	let listPromise = new Promise(function(resolve, reject) {
-		req.app.crud.getAllDocsbyGroup(query, collection, req.app, (err, doc) => {
+		req.app.crud.getAllDataByGroup(query, collection, req.app, (err, doc) => {
 			if (err) {
 				reject({res: false, status : 500, err : "Uncaugth exception"});
 			} else if (doc){
@@ -47,7 +47,7 @@ exports.count = function(req, res) {
 	let query = {}
 
    	let countPromise = new Promise(function(resolve, reject) {
-		req.app.crud.getAllDocsCount(query, collection, req.app, (err, count) => {
+		req.app.crud.getAllDataCount(query, collection, req.app, (err, count) => {
 			if (err) {
 				reject({res: false, status : 500, err : "Uncaugth exception"});
 			} else if (count){
@@ -152,13 +152,13 @@ exports.search = function (req, res) {
 		}
 	}
 
-	let collection = req.app.schema.battles, selection = {}, populateDoc = "";
+	let collection = req.app.schema.battles, selection = {}, activityPopulateObj = "";
 	let sort = {
 		"battle_number" : -1 
 	}
 
 	let searchPromise = new Promise(function(resolve, reject) {
-		req.app.crud.getAll(query, collection, selection, populateDoc, sort, req.app, (err, doc) => {
+		req.app.crud.getAllSearchData(query, collection, selection, activityPopulateObj, sort, req.app, (err, doc) => {
 			if (err) {
 				reject({res: false, status : 500, err : "Uncaugth exception"});
 			} else {
@@ -201,7 +201,7 @@ exports.stats = function(req, res) {
 			{ $sort : { total : -1} },
 			{ $limit : 1 }
 		];
-		req.app.crud.getAllDocsbyGroup(query, collection, req.app, (err, doc) => {
+		req.app.crud.getAllDataByGroup(query, collection, req.app, (err, doc) => {
 			if (err) {
 				reject({res: false, status : 500, err : "Uncaugth exception"});
 			} else if (doc){
@@ -223,7 +223,7 @@ exports.stats = function(req, res) {
 			{ $sort : { total : -1} },
 			{ $limit : 1 }
 		];
-		req.app.crud.getAllDocsbyGroup(query, collection, req.app, (err, doc) => {
+		req.app.crud.getAllDataByGroup(query, collection, req.app, (err, doc) => {
 			if (err) {
 				reject({res: false, status : 500, err : "Uncaugth exception"});
 			} else if (doc){
@@ -245,7 +245,7 @@ exports.stats = function(req, res) {
 			{ $sort : { total : -1} },
 			{ $limit : 1 }
 		];
-		req.app.crud.getAllDocsbyGroup(query, collection, req.app, (err, doc) => {
+		req.app.crud.getAllDataByGroup(query, collection, req.app, (err, doc) => {
 			if (err) {
 				reject({res: false, status : 500, err : "Uncaugth exception"});
 			} else if (doc){
@@ -267,7 +267,7 @@ exports.stats = function(req, res) {
 			{ $sort : { total : -1} },
 			{ $limit : 1 }
 		];
-		req.app.crud.getAllDocsbyGroup(query, collection, req.app, (err, doc) => {
+		req.app.crud.getAllDataByGroup(query, collection, req.app, (err, doc) => {
 			if (err) {
 				reject({res: false, status : 500, err : "Uncaugth exception"});
 			} else if (doc){
@@ -288,7 +288,7 @@ exports.stats = function(req, res) {
 			},
 			{ $sort : { total : -1} }
 		];
-		req.app.crud.getAllDocsbyGroup(query, collection, req.app, (err, doc) => {
+		req.app.crud.getAllDataByGroup(query, collection, req.app, (err, doc) => {
 			if (err) {
 				reject({res: false, status : 500, err : "Uncaugth exception"});
 			} else if (doc){
@@ -311,7 +311,7 @@ exports.stats = function(req, res) {
        			}
        		}
 		];
-		req.app.crud.getAllDocsbyGroup(query, collection, req.app, (err, doc) => {
+		req.app.crud.getAllDataByGroup(query, collection, req.app, (err, doc) => {
 			if (err) {
 				reject({res: false, status : 500, err : "Uncaugth exception"});
 			} else if (doc){
@@ -331,7 +331,7 @@ exports.stats = function(req, res) {
        			}
        		}
 		];
-		req.app.crud.getAllDocsbyGroup(query, collection, req.app, (err, doc) => {
+		req.app.crud.getAllDataByGroup(query, collection, req.app, (err, doc) => {
 			if (err) {
 				reject({res: false, status : 500, err : "Uncaugth exception"});
 			} else if (doc){
